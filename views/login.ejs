@@ -1,0 +1,51 @@
+<%- include header %>
+  <div class="container">
+      <!-- <form class="col-sm-offset-4 col-sm-4 form-horizontal" role="form" method="post"> -->
+          <!-- <fieldset> -->
+          <% if(locals.islogin) { %>
+             用户：<h3> <%= test %></h3>已经登陆。<br>
+             <a class="btn" href="/logout">登出</a>
+              <% } else{ %>
+              <!-- <div class="form-group">
+                 <label class="col-sm-3 control-label" for="username">用户名</label>
+                 <div class="col-sm-9">
+                     <input type="text" class="form-control" id="username" name="username" placeholder="用户名" required>
+                 </div>
+             </div>
+             <div class="form-group">
+                 <label class="col-sm-3 control-label" for="password">密码</label>
+                 <div class="col-sm-9">
+                     <input type="password" class="form-control" id="password" name="password" placeholder="密码" required>
+                 </div>
+             </div>
+             <div class="form-group">
+                 <div class="col-sm-offset-3 col-sm-9">
+                     <button type="submit" class="btn btn-primary">登录</button>
+                 </div>
+             </div> -->
+
+             <div class="wrapper">
+           		<form action="" method="post" >
+           		<div class="loginBox">
+           			<div class="loginBoxCenter">
+           				<p><label for="username">用户名：</label></p>
+           				<p><input type="text" id="username" name="username" class="loginInput" autofocus="autofocus"   placeholder="请输入用户名"  /></p>
+           				<p><label for="password">密码：</label>
+           				<a class="forgetLink" href="https://aq.qq.com/cn2/findpsw/pc/pc_find_pwd_input_account">忘记密码？</a></p>
+           				<p><input type="password" id="password" name="password" class="loginInput"  placeholder="请输入密码"  />
+           				<a class="forgetLink" href="/reg">我要注册！</a></p>
+           			</div>
+           			<div class="loginBoxButtons">
+           				<input id="remember" type="checkbox" name="remember" />
+           				<label for="remember">记住登录状态</label>
+           				<button class="loginBtn" type="submit">登录</button>
+           			</div>
+           		</div>
+           		</form>
+           	</div>
+
+             <% } %>
+         <!-- </fieldset> -->
+     <!-- </form> -->
+ </div>
+ <%- include footer %>
