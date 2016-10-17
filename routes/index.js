@@ -74,4 +74,6 @@ router.get('/', function(req, res) {
          });
      });
 
+  router.get('/music')
+
  module.exports = router;
