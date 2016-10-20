@@ -13,6 +13,15 @@ router.get('/', function(req, res) {
    res.render('home', { title: 'HOME',user:res.locals.islogin});
  });
 
+router.get('/home', function(req, res) {
+     if(req.session.islogin){
+         res.locals.islogin=req.session.islogin;
+     }
+     if(req.cookies.islogin){
+         req.session.islogin=req.cookies.islogin;
+     }
+     res.render('home', { title: 'Home', user: res.locals.islogin });
+ });
 
  router.route('/login')
      .get(function(req, res) {
@@ -45,22 +54,14 @@ router.get('/', function(req, res) {
          });
      });
 
+
  router.get('/logout', function(req, res) {
      res.clearCookie('islogin');
      req.session.destroy();
      res.redirect('/home');
  });
 
- router.get('/home', function(req, res) {
-     if(req.session.islogin){
-         res.locals.islogin=req.session.islogin;
-     }
-     if(req.cookies.islogin){
-         req.session.islogin=req.cookies.islogin;
-     }
-     res.render('home', { title: 'Home', user: res.locals.islogin });
- });
-
+ 
  router.route('/reg')
      .get(function(req,res){
          res.render('reg',{title:'注册'});
@@ -70,7 +71,8 @@ router.get('/', function(req, res) {
 
          usr.insertFun(client,req.body.username ,req.body.password2, function (err) {
                if(err) throw err;
-               res.send('注册成功');
+              // res.send('注册成功');
+              res.sendFile('/views/message');
          });
      });
 
