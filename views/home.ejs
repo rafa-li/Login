@@ -1,8 +1,12 @@
 <%- include header %>
 <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=450 src="http://music.163.com/outchain/player?type=4&id=5811013&auto=0&height=430"></iframe>
-    <% if(locals.islogin){%>
-   用户：<h2><%= test %></h2>已经登陆
+    <% if(locals.islogin){ %>
+   <h2>用户：<%= user %></h2>
+   <span>已经登陆</span>
  <% }else{%>
- <p><a href="/login">登录</a></p>
- <%}%>
+ 	<p>
+ 		<a href="/login">登录</a>
+ 	</p>
+ <% } %>
+
  <%- include footer %>

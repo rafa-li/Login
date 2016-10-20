@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8"/>
-<title>Test</title>
+<title>Login</title>
 <link rel="stylesheet" href="/stylesheets/style.css">
 <link rel="stylesheet" href="/stylesheets/basic.css">
 <link href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
@@ -25,14 +25,14 @@
                 <li class="active"><a href="/">HOME</a></li>
                 <li>
                   <% if(locals.islogin){ %>
-                  <a href="/login"><%= test %></a>
+                  <a href="/login"><%= user %></a>
                   <% }else{ %>
                     <a href="/login">Sign in</a>
                     <% } %>
                 </li>
                 <li><a href="/reg">Sign up</a></li>
                 <li><a href="/music">Music</a></li>
-                <li><a href="###">公司简介</a></li>
+                <li><a href="/photos">相册</a></li>
             </ul>
         </nav>
     </div>

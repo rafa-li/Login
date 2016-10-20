@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var usr = require('dao/dbConnect');
+var usr = require('../db/dbConnect');
 
 /* GET home page. */
 router.get('/', function(req, res) {
@@ -10,7 +10,7 @@ router.get('/', function(req, res) {
  if(req.session.islogin){
      res.locals.islogin=req.session.islogin;
  }
-   res.render('home', { title: 'HOME',test:res.locals.islogin});
+   res.render('home', { title: 'HOME',user:res.locals.islogin});
  });
 
 
@@ -23,7 +23,7 @@ router.get('/', function(req, res) {
          if(req.cookies.islogin){
              req.session.islogin=req.cookies.islogin;
          }
-         res.render('login', { title: '用户登录' ,test:res.locals.islogin});
+         res.render('login', { title: '用户登录' ,user:res.locals.islogin});
      })
      .post(function(req, res) {
          client=usr.connect();
@@ -35,7 +35,7 @@ router.get('/', function(req, res) {
                  if(result[0].password===req.body.password){
                      req.session.islogin=req.body.username;
                      res.locals.islogin=req.session.islogin;
-                     res.cookie('islogin',res.locals.islogin,{maxAge:60000});
+                     res.cookie('islogin',res.locals.islogin,{maxAge:7*24*60*60});
                      res.redirect('/home');
                  }else
                  {
@@ -48,7 +48,7 @@ router.get('/', function(req, res) {
  router.get('/logout', function(req, res) {
      res.clearCookie('islogin');
      req.session.destroy();
-     res.redirect('/');
+     res.redirect('/home');
  });
 
  router.get('/home', function(req, res) {
@@ -58,7 +58,7 @@ router.get('/', function(req, res) {
      if(req.cookies.islogin){
          req.session.islogin=req.cookies.islogin;
      }
-     res.render('home', { title: 'Home', test: res.locals.islogin });
+     res.render('home', { title: 'Home', user: res.locals.islogin });
  });
 
  router.route('/reg')
